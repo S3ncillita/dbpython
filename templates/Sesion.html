@@ -1,0 +1,45 @@
+{% extends 'sesionhtml.html' %} 
+{% block body %}
+{% with messages =get_flashed_messages() %}
+{% if messages %} 
+{% for message in messages %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+ {{ message }}
+ <button
+   type="button"
+   class="btn-close"
+   data-bs-dismiss="alert"
+   aria-label="Close"
+ ></button>
+</div>
+{% endfor %}
+{% endif %}
+ {% endwith %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="text-center">Inicio de Sesión</h2>
+        <form action="/login" method="POST">
+            <div class="mb-3 text-center">
+                <i class="fa-regular fa-envelope-open"></i>
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" name="usuario" required>
+            </div>
+            <div class="mb-3 text-center" >
+                <i class="fa-solid fa-key"></i>
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control"  name="contraseña" required>
+            </div>
+            <div class="mb-3 form-check  d-flex justify-content-center">
+                <input type="checkbox" class="form-check-input" id="remember">
+                <label class="form-check-label mb-0" for="remember">Recordarme</label>
+                <a href="/crear_cuenta" class="ml-5 " style="text-decoration:none;" target="blank">Crear Cuenta</a>
+
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            </div>
+           
+        </form>
+    </div>
+</div>
+{% endblock %}
